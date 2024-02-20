@@ -1,0 +1,37 @@
+{
+  "name": "Cogia App",
+  "version": "0.0.1",
+  "description": "This is a Cogia test app",
+  "main": "main.js",
+  "scripts": {
+    "app": "cd app && npm start",
+    "start": "electron .",
+    "electron:serve": "concurrently -k \"npm run app\" \"npm run electron:start\"",
+    "electron:build": "cd ../app && npm build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:start": "wait-on -v tcp:127.0.0.1:3000 && electron ."
+  },
+  "keywords": [
+    "electron",
+    "reactjs",
+    "typescript"
+  ],
+  "author": "Fitsum Alemu",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.2.3",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^22.0.0",
+    "form-data": "^4.0.0",
+    "wait-on": "^7.2.0"
+  },
+  "electronmon": {
+    "patterns": [
+      "!node_modules/**",
+      "!app/node_modules/**"
+    ]
+  },
+  "devDependencies": {
+    "@iconify/react": "^4.1.1"
+  }
+}
